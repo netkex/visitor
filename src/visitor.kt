@@ -1,3 +1,5 @@
+import java.lang.StringBuilder
+
 enum class OPER {
     multiply, sum, number
 }
@@ -13,8 +15,12 @@ fun getType(tp: String): OPER {
 
 data class node(var lnode: node? = null, var rnode: node? = null, val type: OPER = OPER.number, val number: Int = 0) {
     fun printVisitor(): String {
-        if(type == OPER.number)
-            return number.toString()
+        if(type == OPER.number) {
+            if(number < 0)
+                return "($number)"
+            else
+                return "$number"
+        }
         if(type == OPER.sum) {
             return "${lnode!!.printVisitor()} + ${rnode!!.printVisitor()}"
         }
@@ -29,6 +35,22 @@ data class node(var lnode: node? = null, var rnode: node? = null, val type: OPER
         else
             rside = rnode!!.printVisitor()
         return "$lside * $rside"
+    }
+
+    fun Expand(): String {
+        if(type == OPER.number) {
+            if(number < 0)
+                return "($number)"
+            else
+                return "$number"
+        }
+        if(type == OPER.sum)
+            return "${lnode!!.Expand()} + ${rnode!!.Expand()}"
+        val numsLeft = lnode!!.Expand().split(" + ")
+        val numsRight = rnode!!.Expand().split(" + ")
+        val ans = StringBuilder("")
+        numsLeft.forEach { lnum -> numsRight.forEach { rnum -> ans.append("$lnum * $rnum + ") } }
+        return ans.toString().dropLast(2)
     }
 
     fun calculate(): Int {
