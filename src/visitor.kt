@@ -3,10 +3,10 @@ enum class OPER {
 }
 
 fun getType(tp: String): OPER {
-    when(tp) {
-        "+" -> return OPER.sum
-        "*" -> return OPER.multiply
-        "n" -> return OPER.number
+    return when(tp) {
+        "+" -> OPER.sum
+        "*" -> OPER.multiply
+        "n" -> OPER.number
         else -> throw Exception("Incorrect type!")
     }
 }
