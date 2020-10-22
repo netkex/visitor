@@ -15,15 +15,15 @@ do
       pth_ans="data/integTests/$tst.out"
     fi
 
-    java -jar build/libs/visitor.jar $pth_tst > $pth_ans
-#    diff "cur.txt" "$pth_ans" > diff.txt
-#    if [ -s diff.txt ]
-#      then
-#        echo "$tst test: FAIL"
-#        exit 202
-#      else
-#        echo "$tst test: OK"
-#    fi
+    java -jar build/libs/visitor.jar $pth_tst > cur.txt
+    diff "cur.txt" "$pth_ans" > diff.txt
+    if [ -s diff.txt ]
+      then
+        echo "$tst test: FAIL"
+        exit 202
+      else
+        echo "$tst test: OK"
+    fi
 done
 
 rm -f diff.txt cur.txt
