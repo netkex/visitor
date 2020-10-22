@@ -50,7 +50,7 @@ data class node(var lnode: node? = null, var rnode: node? = null, val type: OPER
         val numsRight = rnode!!.Expand().split(" + ")
         val ans = StringBuilder("")
         numsLeft.forEach { lnum -> numsRight.forEach { rnum -> ans.append("$lnum * $rnum + ") } }
-        return ans.toString().dropLast(2)
+        return ans.toString().dropLast(3)
     }
 
     fun calculate(): Int {

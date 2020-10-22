@@ -7,6 +7,17 @@ plugins {
 group 'org.example'
 mainClassName = "main"
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'main'
+    }
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
 sourceSets {
     main {
         java {
@@ -28,3 +39,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task integTest(type: Exec){
+    commandLine 'bash', 'check.sh'
+}
+
+check.dependsOn integTest
