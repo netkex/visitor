@@ -23,8 +23,8 @@ n x, где x - число
 
 Примеры
 --- 
-|Входной файл|Выражение|  
-|------------|---------|   
-|[inp1](data/integTests/01.in)|[out1](data/integTests/01.out)|     
-|[inp2](data/integTests/05.in)|[out2](data/integTests/05.out)|
-|[inp3](data/integTests/11.in)|[out3](data/integTests/11.out)|
+|Входной файл|Выражение|Схема|  
+|------------|---------|-----|   
+|[inp1](data/integTests/01.in)|[out1](data/integTests/01.out)|[tree1](data/images/tree1.jpg)|
+|[inp2](data/integTests/05.in)|[out2](data/integTests/05.out)|[tree2](data/images/tree2.jpg)|
+|[inp3](data/integTests/11.in)|[out3](data/integTests/11.out)|[tree3](data/images/tree3.jpg)|
