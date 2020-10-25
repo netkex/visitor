@@ -51,7 +51,7 @@ do
 done
 
 rm -f diff.txt cur.txt
-gradle clean
+./gradlew clean
 
 echo "tests passed"
 
