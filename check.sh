@@ -1,6 +1,6 @@
 #! /bin/bash
 
-gradle -q jar
+./gradlew -q jar
 pth_tst=""
 pth_ans=""
 num_of_tests=11
